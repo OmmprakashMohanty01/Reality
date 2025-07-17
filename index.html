@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dark Reality of Money</title>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Creepster', cursive;
+      overflow: hidden;
+      background: black;
+      color: red;
+    }
+
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: radial-gradient(ellipse at center, #1a1a1a 0%, #000 100%);
+    }
+
+    .blood-rain {
+      position: absolute;
+      top: 0;
+      width: 2px;
+      height: 20px;
+      background: red;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-100px); }
+      100% { transform: translateY(100vh); }
+    }
+
+    .blood-stain {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: url('https://i.imgur.com/x2FQy7W.png') no-repeat center/contain;
+      opacity: 0.5;
+      z-index: 0;
+    }
+
+    .blood-bag {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: url('https://i.imgur.com/EzM9ocq.png') no-repeat center/contain;
+      animation: splat 5s ease-in-out infinite;
+      opacity: 0.4;
+      z-index: 0;
+    }
+
+    @keyframes splat {
+      0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.3; }
+      50% { transform: scale(1.3) rotate(15deg); opacity: 0.6; }
+    }
+
+    .skull {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background: url('https://i.imgur.com/WpZgH0b.png') no-repeat center/contain;
+      animation: floatSkull 10s infinite ease-in-out;
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    @keyframes floatSkull {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-50px) rotate(10deg); }
+      100% { transform: translateY(0) rotate(0deg); }
+    }
+
+    .message {
+      position: absolute;
+      font-size: 2em;
+      text-shadow: 0 0 10px red;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+      animation-fill-mode: both;
+      white-space: nowrap;
+    }
+
+    .shake { animation-name: shake; }
+    .zoom { animation-name: zoomInOut; }
+    .fade { animation-name: fadeInOut; }
+
+    @keyframes shake {
+      0%, 100% { transform: translate(0); }
+      25% { transform: translate(2px, -2px); }
+      50% { transform: translate(-2px, 2px); }
+      75% { transform: translate(2px, 2px); }
+    }
+
+    @keyframes zoomInOut {
+      0%, 100% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.3); opacity: 1; }
+    }
+
+    @keyframes fadeInOut {
+      0% { opacity: 0; }
+      50% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    #moneyBtn {
+      position: fixed;
+      top: 30px; /* 👈 moved to top */
+      left: 50%;
+      transform: translateX(-50%);
+      background: black;
+      border: 2px solid lime;
+      color: lime;
+      padding: 15px 30px;
+      font-size: 1.5rem;
+      font-family: 'Creepster', cursive;
+      border-radius: 10px;
+      box-shadow: 0 0 15px lime, 0 0 30px lime;
+      animation: pulseGlow 2s infinite;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 10px lime, 0 0 20px lime; }
+      50% { box-shadow: 0 0 20px lime, 0 0 40px lime; }
+      100% { box-shadow: 0 0 10px lime, 0 0 20px lime; }
+    }
+    .switch-btn {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.9);
+      color: #ff0000;
+      padding: 12px 24px;
+      font-size: 18px;
+      font-family: 'Courier New', monospace;
+      border: 2px solid #ff0000;
+      border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 0 0 15px red;
+      z-index: 9999;
+      transition: all 0.3s ease;
+    }
+
+    .switch-btn:hover {
+      background: #ff0000;
+      color: #000;
+      box-shadow: 0 0 25px #ff0000;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="background"></div>
+
+  <!-- Blood Rain -->
+  <script>
+    for (let i = 0; i < 300; i++) {
+      const drop = document.createElement('div');
+      drop.className = 'blood-rain';
+      drop.style.left = `${Math.random() * 100}vw`;
+      drop.style.animationDuration = `${Math.random() * 3 + 2}s`;
+      document.body.appendChild(drop);
+    }
+
+    // Blood Bags
+    for (let i = 0; i < 10; i++) {
+      const bag = document.createElement('div');
+      bag.className = 'blood-bag';
+      bag.style.top = `${Math.random() * 90}vh`;
+      bag.style.left = `${Math.random() * 90}vw`;
+      document.body.appendChild(bag);
+    }
+
+    // Blood Stains
+    for (let i = 0; i < 8; i++) {
+      const stain = document.createElement('div');
+      stain.className = 'blood-stain';
+      stain.style.top = `${Math.random() * 90}vh`;
+      stain.style.left = `${Math.random() * 90}vw`;
+      document.body.appendChild(stain);
+    }
+
+    // Skulls
+    for (let i = 0; i < 5; i++) {
+      const skull = document.createElement('div');
+      skull.className = 'skull';
+      skull.style.top = `${Math.random() * 90}vh`;
+      skull.style.left = `${Math.random() * 90}vw`;
+      document.body.appendChild(skull);
+    }
+  </script>
+
+  <!-- Animated Messages -->
+  <div class="message shake" style="top: 10%; left: 10%;">When money slays, everyone stays 💰</div>
+  <div class="message zoom" style="top: 30%; left: 20%;">They don’t love you, they love your pockets 🩸</div>
+  <div class="message fade" style="top: 50%; left: 60%;">Broke? Then you’re a ghost to them 👻</div>
+  <div class="message shake" style="top: 70%; left: 40%;">Only rich bleed gold, the rest bleed alone 💀</div>
+
+  <!-- Glowing Money Button -->
+  <button id="moneyBtn">💰 Get Rich 💰</button>
+
+  <script>
+    document.getElementById("moneyBtn").onclick = () => {
+      alert("You sold your soul for money 💀💸");
+    };
+  </script>
+  <a href="broke.html" class="switch-btn">💔 See What Happens When You're Broke</a>
+</body>
+</html>
